@@ -16,6 +16,8 @@ export default {
 <style lang="scss" scoped>
 @import '../style/general.scss';
 
+
+
 header {
     background-color: #1E2D3B;
     min-height: 100px;
