@@ -1,7 +1,7 @@
 <template>
 
 <div class="d-flex flex-column text-center">
-    
+
       <div class="box p-3">
           <div class="image">
                <img class="img-fluid" :src="details.poster">
@@ -26,11 +26,29 @@
 
 <script>
 export default {
-    name:'DiscoCard'
+    name:'DiscoCard',
+    props: ['details']
 
 }
 </script>
 
 <style lang="scss" scoped>
 @import '../style/general.scss';
+
+   .box {
+       background-color: #2e3a46;
+       margin: 10px 0px;
+       padding: 5px;
+       height: 100%;
+      .title {
+          h2{
+              margin-top: 20px;
+              font-size: 16px;
+          }
+      }
+      .author, .year {
+          color: gray;
+          font-size: 13px;
+          }
+   }
 </style>
