@@ -22,6 +22,10 @@
 </template>
 
 <script>
+import axios from "axios";
+import DiscoCard from "./DiscoCard.vue";
+import MyLoading from "./MyLoading.vue";
+
 export default {
     name: 'MyMain',
 
@@ -41,6 +45,7 @@ export default {
     methods: {
         
         getMusic() {
+
             // richiesta axios 
             axios.get('https://flynn.boolean.careers/exercises/api/array/music')
             .then((response) => {
