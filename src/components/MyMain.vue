@@ -1,4 +1,5 @@
 <template>
+
 <main>
 
     <div class="container">
@@ -7,11 +8,15 @@
 
             <div class="container">
 
-                <div v-if="!loading-processing" class="row row-cols-5 py-5 justify-center">
-                    <DiscoCard v-for="details in filtredGenre" :details="details" :key="details.id"/>
+            
+                <div class="row row-cols-5 py-5 justify-center">
+
+                <MyLoading v-if="loadingprocessing"></MyLoading>
+
+                <DiscoCard v-else v-for="details in filtredGenre" :details="details" :key="details.id"/>
+
                 </div>
-                
-                <MyLoading v-else/>
+
 
             </div>
        
@@ -51,6 +56,7 @@ export default {
             .then((response) => {
                 this.dischi = response.data.response;
                 this.loadingprocessing = false;
+                
             })
             .catch(function(error) {
                 // error
@@ -60,6 +66,21 @@ export default {
          //funzione cambio genere
         FaiCambio(text) {
             this.CambioGenere = text;
+        }
+    },
+
+     computed: {
+        filtredGenre() {
+            if ((this.CambioGenere == "") || (this.CambioGenere == "all")) {
+
+                return this.dischi;
+
+            } else {
+                return this.dischi.filter(item => {
+
+                    return item.genre.toLowerCase().replaceAll('', '').includes(this.changeGenre.toLowerCase().replaceAll('', ''));
+                })
+            }
         }
     },
    
